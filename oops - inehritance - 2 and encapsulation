@@ -1,0 +1,106 @@
+# MULTILEVEL INHERITANCE TASK
+# 🎯 Scenario: Education System
+# 👉 Class 1: School
+# school_name
+# method → show_school()
+# 👉 Class 2: Teacher (inherits School)
+# teacher_name
+# subject
+# method → show_teacher()
+# 👉 Class 3: Student (inherits Teacher)
+# student_name
+# grade
+# method → show_student()
+
+# 🧑‍💻 Task:
+# Create 2 students
+# Use super() in all classes
+class School:
+    def __init__(self,scl_name):
+        self.scl_name=scl_name
+    def show_school(self):
+        print(self.scl_name)    
+class Teacher(School):
+    def __init__(self,T_name,sub,scl_name):
+        super().__init__(scl_name)
+        self.T_name=T_name
+        self.sub=sub
+        
+    def show_teacher(self):
+        print( self.T_name,self.sub)
+        
+class Student(Teacher):
+    def __init__(self,std_name,grade,T_name,sub,scl_name):
+        super().__init__(T_name,sub,scl_name)
+        self.std_name=std_name
+        self.grade=grade
+    def show_student(self):
+        print(self.std_name,self.grade)
+
+
+d=Student("narsi","A","vamsi","python","10000coders")
+
+d.show_student()
+d.show_teacher()
+d.show_school()
+        
+
+
+# HIERARCHICAL INHERITANCE TASK
+# 🎯 Scenario: Food Delivery App
+# 👉 Parent: User
+# name
+# location
+# method → login()
+# 👉 Child 1: Customer
+# order_item
+# method → place_order()
+# 👉 Child 2: DeliveryPartner
+# vehicle_type
+# method → deliver_order()
+
+# 🧑‍💻 Task:
+# Create 1 customer and 1 delivery partner
+# Use super()
+# Show login + role-specific actions
+# 👉 Goal:
+#  Same base class → different behavior
+
+class User:
+    def __init__(self,name,location):
+        self.name=name
+        self.location=location
+    def login(self):
+        print(self.name,self.location)
+class Customer(User):
+    def __inti__(self,name,location,item_name):
+        super().__init__(name,location)
+        self.item_name=item_name
+    def place_order(self):
+        print(self.item_name)
+
+class  DeliveryPartener(User):
+    def __inti__(self,name,location,vechile_type):
+        super().__init__(name,location)
+        self.vechile_type=vechile_type
+    def delivery_order(self):
+        print(self.vechile_type)
+        
+c=Customer("narsi","hyd","pastha")
+d=DeliveryPartener("vamsi","mumbai","bike")
+
+c.login()
+c.place_order()
+
+d.login()
+d.delivery_order()
+
+
+
+
+
+
+
+
+
+
